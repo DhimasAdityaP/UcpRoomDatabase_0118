@@ -10,7 +10,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -90,17 +97,18 @@ fun InsertDosenView(
         }
     }
 }
-
 @Composable
 fun InsertBodyDosen(
     modifier: Modifier = Modifier,
-    onValueChange:(DosenEvent)->Unit,
-    onClick:() -> Unit,
+    onValueChange: (DosenEvent) -> Unit,
+    onClick: () -> Unit,
     uiState: DosenUIState
-){
-    Column (
-        modifier= modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.Center,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         FormDosen(
@@ -112,24 +120,27 @@ fun InsertBodyDosen(
         Button(
             onClick = onClick,
             modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
         ) {
-            Text("Simpan")
+            Text("Simpan", color = Color.White)
         }
     }
 }
-@Preview(showBackground = true)
+
 @Composable
 fun FormDosen(
     dosenEvent: DosenEvent = DosenEvent(),
-    onValueChange:(DosenEvent)->Unit={},
+    onValueChange: (DosenEvent) -> Unit = {},
     errorState: FormErrorState = FormErrorState(),
     modifier: Modifier = Modifier
 ) {
     val jenisKelamin = listOf("Laki-Laki", "Perempuan")
 
     Column(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        // Nama Field
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = dosenEvent.nama,
@@ -139,52 +150,53 @@ fun FormDosen(
             label = { Text("Nama") },
             isError = errorState.nama != null,
             placeholder = { Text("Masukkan Nama") },
-
-            )
+            leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) }
+        )
         Text(
             text = errorState.nama ?: "",
-            color = Color.Red
+            color = Color.Red,
+            style = MaterialTheme.typography.bodySmall
         )
-        Column(
-            modifier = modifier.fillMaxWidth()
+
+        // NIDN Field
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = dosenEvent.nidn,
+            onValueChange = {
+                onValueChange(dosenEvent.copy(nidn = it))
+            },
+            label = { Text("NIDN") },
+            isError = errorState.nidn != null,
+            placeholder = { Text("Masukkan NIDN") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            leadingIcon = { Icon(Icons.Default.Info, contentDescription = null) }
+        )
+        Text(
+            text = errorState.nidn ?: "",
+            color = Color.Red,
+            style = MaterialTheme.typography.bodySmall
+        )
+
+        Divider(color = Color.Gray, thickness = 1.dp)
+
+        // Jenis Kelamin
+        Text(text = "Jenis Kelamin", style = MaterialTheme.typography.bodyLarge)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
         ) {
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = dosenEvent.nidn,
-                onValueChange = {
-                    onValueChange(dosenEvent.copy(nidn = it))
-                },
-                label = { Text("NIDN") },
-                isError = errorState.nidn != null,
-                placeholder = { Text("Masukkan NIDN") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
-            )
-            Text(
-                text = errorState.nidn ?: "",
-                color = Color.Red
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Jenis Kelamin")
-            Row(
-                modifier = Modifier.fillMaxWidth()
-
-            ) {
-                jenisKelamin.forEach { jk ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        RadioButton(
-                            selected = dosenEvent.jenisKelamin == jk,
-                            onClick = {
-                                onValueChange(dosenEvent.copy(jenisKelamin = jk))
-                            },
-                        )
-                        Text(
-                            text = jk,
-                        )
-                    }
+            jenisKelamin.forEach { jk ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    RadioButton(
+                        selected = dosenEvent.jenisKelamin == jk,
+                        onClick = {
+                            onValueChange(dosenEvent.copy(jenisKelamin = jk))
+                        }
+                    )
+                    Text(text = jk, style = MaterialTheme.typography.bodyMedium)
                 }
             }
         }
