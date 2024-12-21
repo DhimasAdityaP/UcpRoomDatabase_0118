@@ -29,6 +29,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ucp2.ui.navigation.AlamatNavigasi
+import com.ucp2.ui.viewmodel.dosen.DosenEvent
+import com.ucp2.ui.viewmodel.dosen.DosenUIState
+import com.ucp2.ui.viewmodel.dosen.DosenViewModel
+import com.ucp2.ui.viewmodel.dosen.FormErrorState
 import kotlinx.coroutines.launch
 
 object DestinasiDosenInsert : AlamatNavigasi {
