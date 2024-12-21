@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.ucp2.ui.theme.UCP2Theme
-import com.pam.pam_ucp2.ui.navigation.PengelolaHalaman
+import com.ucp2.ui.navigation.PengelolaHalaman
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
