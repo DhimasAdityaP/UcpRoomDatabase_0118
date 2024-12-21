@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.data.entity.Dosen
+import com.example.ucp2.ui.viewmodel.dosen.PenyediaDosenViewModel
 import com.ucp2.ui.costumwidget.TopAppBar
 import com.ucp2.ui.viewmodel.dosen.HomeDosenViewModel
 import com.ucp2.ui.viewmodel.dosen.HomeUiState
