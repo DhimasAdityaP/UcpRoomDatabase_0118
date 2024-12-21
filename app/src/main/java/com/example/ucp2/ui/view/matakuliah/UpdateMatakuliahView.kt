@@ -15,6 +15,8 @@ import com.ucp2.ui.costumwidget.TopAppBar
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.PenyediaMatakuliahViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.UpdateMatakuliahViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
