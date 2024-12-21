@@ -13,6 +13,11 @@ import com.ucp2.ui.view.dosen.DestinasiDosenInsert
 import com.ucp2.ui.view.dosen.DetailDosenView
 import com.ucp2.ui.view.dosen.InsertDosenView
 import com.ucp2.ui.view.home.HomeView
+import com.ucp2.ui.view.matakuliah.DestinasiMatakuliahInsert
+import com.ucp2.ui.view.matakuliah.DetailMatakuliahView
+import com.ucp2.ui.view.matakuliah.HomeMatakuliahView
+import com.ucp2.ui.view.matakuliah.InsertMatakuliahView
+import com.ucp2.ui.view.matakuliah.UpdateMatakuliahView
 
 @Composable
 fun PengelolaHalaman(

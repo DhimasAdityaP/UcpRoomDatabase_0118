@@ -1,4 +1,5 @@
 package com.ucp2.ui.view.matakuliah
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,14 +27,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.room.util.TableInfo
+import com.example.ucp2.ui.viewmodel.matakuliah.FormErrorState
 import com.example.ucp2.ui.viewmodel.matakuliah.MatakuliahEvent
 import com.example.ucp2.ui.viewmodel.matakuliah.MatakuliahUIState
 import com.example.ucp2.ui.viewmodel.matakuliah.MatakuliahViewModel
 import com.example.ucp2.ui.viewmodel.matakuliah.PenyediaMatakuliahViewModel
 import com.ucp2.ui.costumwidget.TopAppBar
 import com.ucp2.ui.navigation.AlamatNavigasi
-import com.ucp2.ui.viewmodel.dosen.FormErrorState
 import kotlinx.coroutines.launch
+
 
 object DestinasiMatakuliahInsert : AlamatNavigasi {
     override val route = "matakuliahinsert"
@@ -66,7 +69,7 @@ fun InsertMatakuliahView(
                 .fillMaxSize()
                 .padding(padding)
                 .padding(16.dp)
-        ){
+        ) {
             TopAppBar(
                 onBack = onBack,
                 showBackButton = true,
@@ -75,7 +78,7 @@ fun InsertMatakuliahView(
             )
             InsertBodyMatakuliah(
                 uiState = uiState,
-                onValueChange = {updatedEvent->
+                onValueChange = { updatedEvent ->
                     viewModel.updateState(updatedEvent)
                 },
                 onClick = {
