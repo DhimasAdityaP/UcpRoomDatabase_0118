@@ -14,8 +14,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
-import androidx.compose.ui.draw.scale
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.ui.graphics.vector.ImageVector
+
 
 @Composable
 fun HomeView(
@@ -23,10 +26,8 @@ fun HomeView(
     onMataKuliahClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // State untuk kontrol animasi
     var isVisible by remember { mutableStateOf(false) }
 
-    // Memicu animasi saat tampilan dimuat
     LaunchedEffect(Unit) {
         isVisible = true
     }
@@ -34,59 +35,82 @@ fun HomeView(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        // Header dengan animasi
         AnimatedVisibility(
             visible = isVisible,
             enter = fadeIn(animationSpec = tween(1000)) + scaleIn(initialScale = 0.8f)
         ) {
             Text(
                 text = "Home",
-                fontSize = 24.sp,
+                fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF6200EA) // Warna utama
+                color = Color(0xFF6200EA),
+                modifier = Modifier
+                    .padding(bottom = 32.dp)
             )
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        AnimatedButton(text = "Go to Dosen", onClick = onDosenClick)
-        Spacer(modifier = Modifier.height(16.dp))
-        AnimatedButton(text = "Go to Mata Kuliah", onClick = onMataKuliahClick)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            AnimatedIconButton(
+                text = "Go to Dosen",
+                icon = Icons.Filled.AccountCircle,
+                onClick = onDosenClick,
+                modifier = Modifier.weight(1f)
+            )
+            AnimatedIconButton(
+                text = "Go to Mata Kuliah",
+                icon = Icons.Filled.Edit,
+                onClick = onMataKuliahClick,
+                modifier = Modifier.weight(1f)
+            )
+        }
     }
 }
 
 @Composable
-fun AnimatedButton(text: String, onClick: () -> Unit) {
-    var isPressed by remember { mutableStateOf(false) }
-
+fun AnimatedIconButton(
+    text: String,
+    icon: ImageVector,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Button(
         onClick = onClick,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(80.dp), // Tinggi kotak
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF6200EA),
+            containerColor = Color(0xFF3A5FCD),
             contentColor = Color.White
         ),
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .clickable { isPressed = !isPressed }
-    ) {
-        Text(
-            text = text,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium,
-            modifier = Modifier
-                .animateScale(isPressed) // Menambahkan animasi pada teks
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = 8.dp,
+            pressedElevation = 4.dp
         )
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = text,
+                modifier = Modifier.size(24.dp) // Ukuran ikon
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = text,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
     }
-}
-
-@Composable
-fun Modifier.animateScale(isPressed: Boolean): Modifier {
-    val scale by animateFloatAsState(
-        targetValue = if (isPressed) 1.1f else 1.0f,
-        animationSpec = tween(durationMillis = 300)
-    )
-    return this.then(Modifier.scale(scale))
 }
