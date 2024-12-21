@@ -29,6 +29,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.ui.viewmodel.matakuliah.MatakuliahEvent
 import com.example.ucp2.ui.viewmodel.matakuliah.MatakuliahUIState
 import com.example.ucp2.ui.viewmodel.matakuliah.MatakuliahViewModel
+import com.example.ucp2.ui.viewmodel.matakuliah.PenyediaMatakuliahViewModel
 import com.ucp2.ui.costumwidget.TopAppBar
 import com.ucp2.ui.navigation.AlamatNavigasi
 import com.ucp2.ui.viewmodel.dosen.FormErrorState
