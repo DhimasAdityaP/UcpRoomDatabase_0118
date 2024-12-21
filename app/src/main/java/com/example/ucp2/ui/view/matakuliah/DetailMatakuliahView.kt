@@ -34,6 +34,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.data.entity.MataKuliah
 import com.ucp2.ui.costumwidget.TopAppBar
+import com.ucp2.ui.viewmodel.matakuliah.DetailMatakuliahUiState
+import com.ucp2.ui.viewmodel.matakuliah.DetailMatakuliahViewModel
 
 
 @Composable

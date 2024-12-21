@@ -43,6 +43,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.data.entity.MataKuliah
+import com.example.ucp2.ui.viewmodel.matakuliah.HomeMatakuliahUiState
+import com.example.ucp2.ui.viewmodel.matakuliah.HomeMatakuliahViewModel
 import com.ucp2.ui.costumwidget.TopAppBar
 import kotlinx.coroutines.launch
 
