@@ -100,3 +100,4 @@ data class MatakuliahEvent(
     val semester:String="",
     val jenis: String="",
     val dosenpengampu:String=""
+)
