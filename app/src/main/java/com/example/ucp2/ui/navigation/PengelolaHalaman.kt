@@ -12,6 +12,7 @@ import com.example.ucp2.ui.view.home.HomeDosenView
 import com.ucp2.ui.view.dosen.DestinasiDosenInsert
 import com.ucp2.ui.view.dosen.DetailDosenView
 import com.ucp2.ui.view.dosen.InsertDosenView
+import com.ucp2.ui.view.home.HomeView
 
 @Composable
 fun PengelolaHalaman(
