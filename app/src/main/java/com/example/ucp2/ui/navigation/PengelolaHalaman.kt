@@ -8,6 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.ucp2.ui.view.home.HomeDosenView
+import com.ucp2.ui.view.dosen.DestinasiDosenInsert
+import com.ucp2.ui.view.dosen.DetailDosenView
+import com.ucp2.ui.view.dosen.InsertDosenView
 
 @Composable
 fun PengelolaHalaman(
