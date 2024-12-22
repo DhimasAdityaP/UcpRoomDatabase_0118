@@ -42,12 +42,12 @@ class UpdateMatakuliahViewModel(
     fun validateFields() : Boolean {
         val event = updateUIState.matakuliahEvent
         val errorState = FormErrorState(
-            kode = if (event.kode.isNotEmpty()) null else "NIM tidak boleh kosong",
+            kode = if (event.kode.isNotEmpty()) null else "Kode tidak boleh kosong",
             nama = if (event.nama.isNotEmpty()) null else "Nama tidak boleh kosong",
-            sks = if (event.sks.isNotEmpty()) null else "Jenis Kelamin tidak boleh kosong",
-            semester = if (event.semester.isNotEmpty()) null else "Alamat tidak boleh kosong",
-            jenis = if (event.jenis.isNotEmpty()) null else "Kelas tidak boleh kosong",
-            dosenpengampu = if (event.dosenpengampu.isNotEmpty()) null else "Angkatan tidak boleh kosong",
+            sks = if (event.sks.isNotEmpty()) null else "Sks tidak boleh kosong",
+            semester = if (event.semester.isNotEmpty()) null else "Semester tidak boleh kosong",
+            jenis = if (event.jenis.isNotEmpty()) null else "Jenis tidak boleh kosong",
+            dosenpengampu = if (event.dosenpengampu.isNotEmpty()) null else "Dosen pengampu tidak boleh kosong",
         )
 
         updateUIState = updateUIState.copy(isEntryValid = errorState)
